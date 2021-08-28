@@ -1,0 +1,78 @@
+#mySidenav a {
+  position: absolute;
+  /*Positionthemrelativetothebrowserwindow*/
+  left: -100px;
+  /*Positionthemoutsideofthescreen*/
+  transition: 0.3s;
+  /*Addtransitiononhover*/
+  padding: 15px;
+  /*15pxpadding*/
+  width: 150px;
+  /*Setaspecificwidth*/
+  text-decoration: none;
+  /*Removeunderline*/
+  font-size: 20px;
+  /*Increasefontsize*/
+  color: white;
+  /*Whitetextcolor*/
+  border-radius: 0 5px 5px 0;
+  /* Rounded corners on the top right and bottom right side */
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  -ms-border-radius: 0 5px 5px 0;
+  -o-border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+  /* On mouse-over, make the elements appear as they should */
+}
+
+/* The about link: 20px from the top with a green background */
+#myprofile {
+  top: 130px;
+  background-color: #4CAF50;
+}
+
+#myaddress {
+  top: 180px;
+  background-color: #2196F3;
+  /* Blue */
+}
+
+#readylist {
+  top: 240px;
+  background-color: #f44336;
+  /* Red */
+}
+
+#orders {
+  top: 300px;
+  background-color: #555
+    /* Light Black */
+}
+
+
+.body {
+  background-image: url('https://t4.ftcdn.net/jpg/02/32/16/07/360_F_232160763_FuTBWDd981tvYEJFXpFZtolm8l4ct0Nz.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.kenburns-bottom {
+  -webkit-animation: kenburns-bottom 5s ease-out both;
+  animation: kenburns-bottom 5s ease-out both;
+}

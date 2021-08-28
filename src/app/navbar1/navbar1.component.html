@@ -1,0 +1,62 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-inverse navbar-light scrolling-navbar"
+  style="background: #ffd114;font-family: 'Amita', cursive;color:white;">
+  <div class="container-fluid">
+    <a class="navbar-brand" id="logo" routerLink="home" style="color: black;font-size: 20px;font-weight: bold;"><img
+        src="../../assets/Screenshot (432).svg" width="150px" height="40px" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon "></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto float-end ">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" routerLink="home" id="home" *ngIf="!logStatus" routerLinkActive="active"
+            style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M20 7.093v-5.093h-3v2.093l3 3zm4 5.907l-12-12-12 12h3v10h18v-10h3zm-5 8h-14v-10.26l7-6.912 7 6.99v10.182zm-5-1h-4v-6h4v6z" />
+            </svg> Home</a>
+          <a class="nav-link js-scroll-trigger" routerLink="home" id="home" *ngIf="logStatus" routerLinkActive="active"
+            style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M20 7.093v-5.093h-3v2.093l3 3zm4 5.907l-12-12-12 12h3v10h18v-10h3zm-5 8h-14v-10.26l7-6.912 7 6.99v10.182zm-5-1h-4v-6h4v6z" />
+            </svg> Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="" id="logout" (click)="logoutuser()" id="logout" *ngIf=" logoff()"
+            style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M14 19v-.083c-1.178.685-2.542 1.083-4 1.083-4.411 0-8-3.589-8-8s3.589-8 8-8c1.458 0 2.822.398 4 1.083v-2.245c-1.226-.536-2.576-.838-4-.838-5.522 0-10 4.477-10 10s4.478 10 10 10c1.424 0 2.774-.302 4-.838v-2.162zm4-9.592l2.963 2.592-2.963 2.592v-1.592h-8v-2h8v-1.592zm-2-4.408v4h-8v6h8v4l8-7-8-7z" />
+            </svg> Logout </a>
+        </li>
+        <!-----------------------------------------------------------------------LOGIN------------------------------------------------------->
+
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" *ngIf="!logoff()" id="login" routerLink="login"
+            style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;color: black;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M10 9.408l2.963 2.592-2.963 2.592v-1.592h-8v-2h8v-1.592zm-2-4.408v4h-8v6h8v4l8-7-8-7zm6-3c-1.787 0-3.46.474-4.911 1.295l.228.2 1.396 1.221c1.004-.456 2.114-.716 3.287-.716 4.411 0 8 3.589 8 8s-3.589 8-8 8c-1.173 0-2.283-.26-3.288-.715l-1.396 1.221-.228.2c1.452.82 3.125 1.294 4.912 1.294 5.522 0 10-4.477 10-10s-4.478-10-10-10z" />
+            </svg> Login</a>
+        </li>
+        <!-- -----------------------------------------------------------------REGISTER------------------------------------------------------------>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" routerLink="register" *ngIf=" !logoff()" id="register"
+            style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;color: black;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M9 19h-4v-2h4v2zm2.946-4.036l3.107 3.105-4.112.931 1.005-4.036zm12.054-5.839l-7.898 7.996-3.202-3.202 7.898-7.995 3.202 3.201zm-6 8.92v3.955h-16v-20h7.362c4.156 0 2.638 6 2.638 6s2.313-.635 4.067-.133l1.952-1.976c-2.214-2.807-5.762-5.891-7.83-5.891h-10.189v24h20v-7.98l-2 2.025z" />
+            </svg> Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script type="text/javascript">
+  $('.js-scroll-trigger').click(function () {
+    $('.navbar-collapse').collapse('hide');
+  });
+</script>

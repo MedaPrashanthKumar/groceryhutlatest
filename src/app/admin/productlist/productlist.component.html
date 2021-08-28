@@ -1,0 +1,88 @@
+<div class="container-fluid " style="margin-top:5%;">
+    <!-- search  -->
+    <div class="p-1 bg-dark rounded rounded-pill shadow-sm mb-4 w-50 mx-auto demo">
+        <div class="input-group">
+            <input type="search" style="border:1px solid black;border-radius: 25px ;" class=" form-control  bg-light "
+                placeholder="Search By Name.." [(ngModel)]="searchTerm">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-link text-primary mb-1" id="button-addon1"><i
+                        class="fa fa-search fa-2x"></i></button>
+            </div>
+        </div>
+    </div>
+    <h1 class="text-center text-primary ">Product details</h1>
+    <div style="overflow-x: auto;">
+        <table class="table table-bordered text-center table-hover table-striped">
+            <thead>
+                <tr class="mxp-auto">
+                    <th>Sl.no</th>
+                    <!-- <th>Category</th> -->
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Brand</th>
+                    <th>Product Price</th>
+                    <!-- <th>Description</th>-->
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th class="text-center m-auto" colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let product of products | search:searchTerm; let i=index">
+                <tr>
+                    <td>{{i+1}}</td>
+                    <td>
+                        <div *ngIf="!product.isEdit">{{product.productid}}</div>
+                        <div *ngIf="product.isEdit"><input type="number" class="form-control" name="productid"
+                                [(ngModel)]="product.productid"></div>
+                    </td>
+                    <td>
+                        <div *ngIf="!product.isEdit">{{product.productname}}</div>
+                        <div *ngIf="product.isEdit"><input type="text" class="form-control" name="productname"
+                                [(ngModel)]="product.productname"></div>
+                    </td>
+
+                    <td>
+                        <div *ngIf="!product.isEdit">{{product.productbrand}}</div>
+                        <div *ngIf="product.isEdit"><input type="text" class="form-control" name="productbrand"
+                                [(ngModel)]="product.productbrand"></div>
+                    </td>
+                    <td>
+                        <div *ngIf="!product.isEdit">{{product.productprice}}</div>
+                        <div *ngIf="product.isEdit"><input type="text" class="form-control" name="productprice"
+                                [(ngModel)]="product.productprice"></div>
+                    </td>
+                    <td>
+                        <div *ngIf="!product.isEdit">{{product.productdescription}}</div>
+                        <div *ngIf="product.isEdit"><input type="text" class="form-control" name="productdescription"
+                                [(ngModel)]="product.productdescription"></div>
+                    </td>
+                    <td>
+                        <div *ngIf="!product.isEdit"> <img src={{product.productimage}} width="150px" height="200px"
+                                class="d-block mx-auto image" alt=""> </div>
+                        <div *ngIf="product.isEdit"><input class="form-control" name="productimage"
+                                [(ngModel)]="product.productimage"></div>
+                    </td>
+                    <!-- ------------------------------------EDIT------AND----SAVE--------------->
+                    <td>
+                        <div *ngIf="!product.isEdit">
+                            <button class="btn btn-info " (click)="edit(product)">Edit</button>
+                        </div>
+                        <div *ngIf="product.isEdit">
+                            <button class="btn btn-info" (click)="save(product)">Save</button>
+                        </div>
+                    </td>
+                    <!-- ----------------------------------------DELETE------------------------------------------>
+                    <td>
+                        <div *ngIf="!product.isEdit">
+                            <button class="btn btn-danger " (click)="delete(product)">Delete</button>
+                        </div>
+                        <div *ngIf="product.isEdit">
+                            <button class="btn btn-danger" (click)="cancel(product)">Cancel</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

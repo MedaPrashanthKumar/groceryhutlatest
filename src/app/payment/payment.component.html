@@ -1,0 +1,120 @@
+<div class="body">
+    <div class="row ">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 mt-5"><article class="card " >
+            <div class="card-body p-5">
+                <h5>Total Price: {{sum}}</h5>
+            <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+                    <i class="fa fa-credit-card"></i> Credit/Debit Card</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                    <i class="fab fa-paypal"></i>  Paypal</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+                    <i class="fa fa-university"></i>  Bank Transfer</a></li>
+            </ul>
+            <div class="tab-content">
+            <div class="tab-pane fade show active" id="nav-tab-card">
+                <form #formRef="ngForm"  class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)" novalidate>
+                <div class="form-group">
+                    <label for="username" class="form-label"> Full name (on the card)</label>
+                    <input type="text" class="form-control " id="username" value="username" name="username" #ref1="ngModel" placeholder="Please Enter Full Name" ngModel required>
+                    <!-- validation for full name on card -->
+                    <div class="text" style="color: red; " *ngIf="(ref1.touched || formRef.submitted) && (ref1.errors?.required)">
+                        *Full name is required </div>
+                </div> 
+                <div class="form-group">
+                    <label for="cardNumber" class="form-label">Card number</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="cardNumber" value="cardnumber" #ref2="ngModel"  name="cardNumber" required ngModel placeholder="Please Enter The Card Number">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-muted">
+                                <i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
+                                <i class="fab fa-cc-mastercard"></i>
+                            </span>
+                        </div> 
+                            <!-- validation for card number -->
+                            <div class="text" style="color: red; " *ngIf="(ref2.touched || formRef.submitted) && (ref2.errors?.required)">
+                                *Card Number is required </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label><span class="hidden-xs">Expiration</span> </label>
+                            <div class="input-group">
+                                <input type="number" name="mm" ngModel #ref3="ngModel" class="form-control" required placeholder="MM" >
+                                <input type="number" name="yy" ngModel #ref4="ngModel" class="form-control" required placeholder="YY">
+                            </div>
+                            <!-- validation for card -->
+                            <span class="text" style="color: red;margin-right: 200px;" *ngIf="(ref3.touched || formRef.submitted) && (ref3.errors?.required)">
+                                *MM Number is required </span>
+                                
+                                <span class="text" style="color: red;" *ngIf="(ref4.touched || formRef.submitted) && (ref4.errors?.required)">
+                                    *YY Number is required </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label data-toggle="tooltip" title=""  data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                            <input type="number" #ref5="ngModel" placeholder="CVV" name="cvv" ngModel required class="form-control">
+                                   
+                            <div class="text" style="color: red;" *ngIf="(ref5.touched || formRef.submitted) && (ref5.errors?.required)">
+                                *CVV Number is required </div>
+                        </div> 
+                    </div>
+                </div> 
+                <button class="subscribe btn btn-primary d-block mx-auto mt-4" type="submit"> Confirm  </button>
+                </form>
+            </div> 
+            <div class="tab-pane fade" id="nav-tab-paypal">
+            <p>Paypal is easiest way to pay online</p>
+            <p>
+          <a href="https://www.paypal.com/in/home"><button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i> Log in my Paypal </button></a>  
+            </p>
+            </div>
+            <div class="tab-pane fade" id="nav-tab-bank">
+            <p>Bank account details</p>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Please Select Your Bank
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="https://www.unionbankofindia.co.in/english/home.aspx">Andhra Bank</a>
+                  <a class="dropdown-item" href="https://www.icicibank.com/">ICICI Bank</a>
+                  <a class="dropdown-item" href="https://onlinesbi.com/">SBI Bank</a>
+                  <a class="dropdown-item" href="https://www.hdfcbank.com/">HDFC Bank</a>
+                  <a class="dropdown-item" href="https://syndicatebank.in/">Syndicate Bank</a>
+                  <a class="dropdown-item" href="http://www.tgbhyd.in/">Telangana Grameena Bank</a>
+                </div>
+              </div>
+            </div> 
+            </div> 
+            </div> 
+            </article> </div>
+        <div class="col-sm-1"></div>
+    </div>
+    </div>
+    
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+    
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+    </script>

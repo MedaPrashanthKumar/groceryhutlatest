@@ -1,0 +1,37 @@
+<img src="http://www.sunnytrexim.com/images/banner-spices.jpg" alt="" class="w-100">
+<div class="container-fluid mt-4">
+  <div class="row row-cols-1 row-cols-sm-4 g-4" style="justify-content: center;">
+    <div class="col" *ngFor="let product of spicesarray">
+      <div class="card h-100 bg-light" style="  border:2px solid black  ;border-radius: 30px;">
+        <span class="vegetarianicon mt-2 " style="margin-left: 10px;  ">⊡</span>
+        <img src={{product.productimage}} class="card-img-top  p-3 mx-auto"
+          style="cursor: pointer; height: 200px; width: 160px;" alt="...">
+        <div class="card-body">
+          <a href="#" style="text-decoration: none; color: black;">
+            <h3 class="card-title text-center" style="font-family: 'Charm', cursive;"> {{product.productname }} </h3>
+          </a>
+          <h5 class="card-title">
+            <h5 style="font-family: 'Kreon', serif;">MRP: <i class="fas fa-rupee-sign"></i>{{product.productprice }}
+            </h5>
+          </h5>
+          <h5 class="card-title">
+            <h5 style="font-family: 'Kreon', serif;">Brand: {{product.productbrand | titlecase}}</h5>
+          </h5>
+          <h5 class="card-title">
+            <h5 style="font-family: 'Kreon', serif;">Country of Origin: {{product.countryoforigin | uppercase}}</h5>
+          </h5>
+        </div>
+        <div class="btn btn-toolbar" style="justify-content: space-between;">
+          <button class="btn  m-2"
+            style="width: max-content; background-color: red; color: black; border-radius: 3px solid red; border:15px"
+            (click)="gotoViewProduct(product.productid)"><i class="far fa-eye"></i>View</button>
+          <button class="btn  float-right m-2" style="width: max-content;
+                background-color:darkblue; color: white; border-radius: 3px solid darkblue; border:15px"
+            (click)="addToCart(product)"><i class="fas fa-shopping-cart"></i>Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<app-footer></app-footer>

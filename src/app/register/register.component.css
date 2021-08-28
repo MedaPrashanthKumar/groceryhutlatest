@@ -1,0 +1,58 @@
+@keyframes scale-up-hor-center {
+  0% {
+    transform: scaleX(0.4);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.container {
+  animation: scale-up-hor-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.body {
+  background: linear-gradient(to top left, #ccccff 0%, #66ffcc 100%);
+}
+
+.container-fluid {
+  background-image: url("https://images.unsplash.com/photo-1569982175971-d92b01cf8694?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBsYWluJTIwYmFja2dyb3VuZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.example2 {
+  animation: slide-left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(-110px);
+  }
+}
+
+.example1 {
+  animation: slide-right 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes slide-right {
+  0% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(90px);
+  }
+}
+
+/* @keyframes scale-up-hor-center{0%{transform:scaleX(.4)}100%{transform:scaleX(1)}}
+
+.container{
+    animation:scale-up-hor-center .4s cubic-bezier(.39,.575,.565,1.000) both
+}
+
+.body{
+    background: linear-gradient(to top left, #ccccff 0%, #66ffcc 100%);
+} */

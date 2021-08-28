@@ -1,0 +1,56 @@
+<div class="body">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- style="background-color:skyblue;height:100vh;" -->
+      <div class="col-sm-7 example1 my-5">
+        <img
+          src="https://image.freepik.com/free-vector/guy-delivers-parcel-home-door-fast-delivery-service-woman-receives-order-food-bag-from-courier-express-shipping-cartoon-design_284092-233.jpg"
+          alt="Registeration Image" class="img d-block mx-auto  w-100" style="height: max-content;">
+      </div>
+      <div class="col-sm-5 example2 mt-5 ">
+        <!-- Register Form -->
+        <h2 class="text" style="margin-left: 90px;">Billing Address</h2>
+        <form #formRef="ngForm" class="form " (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+          <!-- Username -->
+          <input type="text" style="width: 75%;" id="n" class="form-control mb-3" name="username" required
+            #ref1="ngModel" placeholder="Firstname" ngModel autocomplete="off">
+          <!-- username validation -->
+          <div class="text" style="color: red;" *ngIf="(ref1.touched || formRef.submitted) && (ref1.errors?.required)">
+            *Firstname is required </div>
+          <!-- Lastname -->
+          <input type="text" style="width: 75%;" id="n" class="form-control mb-3" name="lastname" required
+            #ref9="ngModel" placeholder="Lastname" ngModel autocomplete="off">
+          <!-- lastname validation -->
+          <div class="text" style="color: red;" *ngIf="(ref9.touched || formRef.submitted) && (ref9.errors?.required)">
+            *Lastname is required </div>
+          <!-- email -->
+          <input type="email" style="width: 75%;" class="form-control mb-3" id="email" placeholder="Email" value="email"
+            name="email" #email="ngModel" autocomplete="off" ngModel required>
+          <!-- validation for email -->
+          <p *ngIf="(email.touched || formRef.submitted)&&email.errors?.required" class="text" style="color: red;">
+            *Email required</p>
+          <!-- Mobile number -->
+          <input type="number" style="width: 75%;" class="form-control mb-3" id="number" value="number"
+            placeholder="Enter your mobile number" autocomplete="off" name="number" #number="ngModel" ngModel required>
+
+          <!-- validation for Number-->
+          <p *ngIf="(number.touched || formRef.submitted)&&number.errors?.required" class="text" style="color: red;">
+            *Mobile number is Required</p>
+          <!-- Address -->
+          <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" style="width: 75%;"
+            autocomplete="off" placeholder="Enter Your Address" ngModel name="address" value="address"
+            #address="ngModel" required></textarea>
+          <!-- validation for address -->
+          <p *ngIf="(address.touched || formRef.submitted)&&address.errors?.required" class="text" style="color: red;">
+            *Address is required</p>
+          <!-- ----------------------------------------------------------------------->
+          <!-- submit button -->
+          <button type="submit"
+            style=" background-color: aqua; color: black; font-family: 'Courgette',cursive; margin-left: 90px;"
+            [disabled]="formRef.form.invalid" (click)="payment()" class="btn   mt-2 mb-2">Proceed to Payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

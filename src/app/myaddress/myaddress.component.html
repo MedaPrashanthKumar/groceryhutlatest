@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row" style="justify-content: center;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+                <h3
+                    style="font-family:'Gentium Basic', serif; font-size: 30px; text-align: center; color: purple; font-weight: bold;">
+                    Add New Address</h3>
+                <!--Country-->
+                <div class="form-floating mb-2">
+                    <select class="form-select mb-2" aria-label="Default select example" name="country" id="country"
+                        #country="ngModel" ngModel required>
+                        <option value="{{countryName}}" *ngFor="let countryName of countryArray">{{countryName}}
+                        </option>
+                    </select>
+                    <!--Country validation-->
+                    <div class="form-control is-invalid"
+                        *ngIf="(country.touched || formRef.submitted) && (country.errors?.required)">*Select Country
+                    </div>
+                </div>
+                <!--Username-->
+                <input type="text" id="n" class="form-control mb-2" name="username" required #ref1="ngModel"
+                    placeholder="Username" ngModel autocomplete="off">
+                <!-- username validation -->
+                <div class="form-control is-invalid mb-2"
+                    *ngIf="(ref1.touched || formRef.submitted) && (ref1.errors?.required)">*Username is required </div>
+                <!--Mobile Number-->
+                <input type="number" class="form-control mb-2" id="number" value="number"
+                    placeholder="Enter your mobile number" autocomplete="off" name="number" #number="ngModel" ngModel
+                    required>
+                <!-- validation for Number-->
+                <p *ngIf="(number.touched || formRef.submitted)&&number.errors?.required"
+                    class="form-control is-invalid">*Mobile number is Required</p>
+                <textarea type="text" class="form-control mb-2" id="exampleFormControlTextarea1" rows="3"
+                    autocomplete="off" placeholder="Flat, House no,State" ngModel name="address" value="address"
+                    #address="ngModel" required></textarea>
+                <!-- validation for address -->
+                <p *ngIf="(address.touched || formRef.submitted)&&address.errors?.required"
+                    class="form-control is-invalid">*Enter an address</p>
+                <!--Address - Area-->
+                <textarea type="text" class="form-control mb-2" id="exampleFormControlTextarea1" rows="3"
+                    autocomplete="off" placeholder="Area, Colony, Street" ngModel name="address2" value="address2"
+                    #address2="ngModel" required></textarea>
+                <!-- validation for address -->
+                <p *ngIf="(address2.touched || formRef.submitted)&&address2.errors?.required"
+                    class="form-control is-invalid">*Enter your Area or Colony or Street name</p>
+                <!--Address Town/City-->
+                <textarea type="text" class="form-control mb-2" id="exampleFormControlTextarea1" rows="3"
+                    autocomplete="off" placeholder="Landmark" ngModel name="address3" value="address3"
+                    #address3="ngModel" required></textarea>
+                <!-- validation for address -->
+                <p *ngIf="(address3.touched || formRef.submitted)&&address3.errors?.required"
+                    class="form-control is-invalid">*Enter your Landmark</p>
+                <!--Submit-->
+                <button type="submit" class="btn d-block mx-auto mt-2 mb-2"
+                    style="background-color: crimson; color: white; font-weight: bold; font-size: 18px;"
+                    (ngSubmit)="formRef.form.valid && onSubmit(formRef)">Add Address</button>
+            </form>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>

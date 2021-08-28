@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- style="background-color:skyblue;height:100vh;" -->
+    <div class="col-sm-7  example1 mt-5">
+      <img src="../../assets/Sriregister.png" alt="Registeration Image" class="img d-block mx-auto"
+        style="height: max-content;width: auto;">
+    </div>
+    <div class="col-sm-5 example2 mt-5">
+      <!-- Register Form -->
+      <h3 style="font-family: 'Courgette',cursive; font-size: 30px; color: sandybrown;">Setup Your Account Here</h3>
+      <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+        <!-- Username -->
+        <input type="text" style="width: 75%;" id="n" class="form-control mb-3" name="username" required #ref1="ngModel"
+          placeholder="Username" ngModel autocomplete="off">
+        <!-- username validation -->
+        <div class="text" style="color: red;" *ngIf="(ref1.touched || formRef.submitted) && (ref1.errors?.required)">
+          *Username is required </div>
+        <!-- password -->
+        <div class="form-group">
+          <input type="password" style="width: 75%;" placeholder="Password" id="pw" value="password"
+            class="form-control mb-3" name="password" required minlength="6"
+            pattern="(^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$)" #ref2="ngModel" ngModel>
+        </div>
+        <!-- Password validation -->
+        <div class="text" style="color: red;" *ngIf="(ref2.touched || formRef.submitted) ">
+          <div *ngIf="ref2.errors?.required">
+            *Please enter password
+          </div>
+          <div *ngIf="ref2.errors?.minlength">
+            *Minimum length should be 6
+          </div>
+          <div *ngIf="ref2.errors?.pattern">
+            *Password should contain one digit and one capital letter
+          </div>
+        </div>
+        <!-- email -->
+        <input type="email" style="width: 75%;" class="form-control mb-3" id="email" placeholder="Email" value="email"
+          name="email" #email="ngModel" autocomplete="off" ngModel required>
+        <!-- validation for email -->
+        <p *ngIf="(email.touched || formRef.submitted)&&email.errors?.required" class="text" style="color: red;">*Email
+          required</p>
+        <!-- Mobile number -->
+        <input type="number" style="width: 75%;" class="form-control mb-3" id="number" value="number"
+          placeholder="Enter your mobile number" autocomplete="off" name="number" #number="ngModel" ngModel required>
+        <!-- validation for Number-->
+        <p *ngIf="(number.touched || formRef.submitted)&&number.errors?.required" class="text" style="color: red;">
+          *Mobile number is Required</p>
+        <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" style="width: 75%;"
+          autocomplete="off" placeholder="Enter Your Address" ngModel name="address" value="address" #address="ngModel"
+          required></textarea>
+        <!-- validation for address -->
+        <p *ngIf="(address.touched || formRef.submitted)&&address.errors?.required" class="text" style="color: red;">
+          *Address is required</p>
+        <!-- --------------------------------------------------------------------- -->
+        <!-- terms and conditions -->
+        <input class="form-check-input" width="75%" type="checkbox" value="" id="invalidCheckbox1" name="checkbox"
+          value="checkbox" #checkbox="ngModel" required ngModel>
+        <label class="form-check-label" for="invalidCheck" style="color: sandybrown; padding-left: 2px;"> I Agree to
+          terms & Conditions </label>
+        <p *ngIf="(checkbox.touched || formRef.submitted)&&checkbox.errors?.required" class="text"
+          style="font-size: 11px; color: red;">*Please check the box to register</p>
+        <!-- submit button -->
+        <button type="submit" style=" background-color: aqua; color: black; font-family: 'Courgette',cursive;"
+          class="btn  d-block mx-auto mt-2 mb-2">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

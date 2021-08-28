@@ -1,0 +1,14 @@
+@keyframes roll-in-left {
+  0% {
+    transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+h1 {
+  animation: roll-in-left 2s ease-out both;
+}

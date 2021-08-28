@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row login">
+    <div class="col-sm-6">
+      <img src="../../assets/loginbanner.webp" alt="" class="w-100 h-100">
+    </div>
+    <div class="col-sm-6">
+      <h3 style="font-family: 'Courgette',cursive;  font-size: 30px; margin-top: 120px;">Welcome...</h3>
+      <form #ref="ngForm" class="form w-75 mt-3" (ngSubmit)="ref.form.valid && onSelect(ref)">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="person" id="user" value="user" required #person="ngModel"
+            ngModel>
+          <label class="form-check-label" for="user"
+            style=" font-size: 22px;font-family: 'Courgette',cursive;">User</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="person" id="admin" value="admin" required #person="ngModel"
+            ngModel>
+          <label class="form-check-label" for="admin"
+            style="font-size: 22px; font-family: 'Courgette',cursive;">Admin</label>
+        </div>
+        <!-- person validation  -->
+        <div class="text" style="color: red;" *ngIf="(person.touched || ref.submitted) && (person.errors?.required)">
+          *Please choose one</div>
+        <input type="text" class="form-control mb-2" id="username" placeholder="Username" name="username"
+          #username="ngModel" autocomplete="off" ngModel required>
+        <p *ngIf="(username.touched || ref.submitted)&&username.errors?.required" class="text" style="color: red;">
+          *Username required</p>
+        <input type="password" class="form-control mb-2" id="password" placeholder="Password " autocomplete="off"
+          name="password" #password="ngModel" ngModel required>
+        <!-- validation for password -->
+        <p *ngIf="(password.touched || ref.submitted) && password.errors?.required" class="text" style="color: red;">
+          *Password required</p>
+        <button type="submit"
+          style="color: white; background-color: black;font-size: 20px; font-family:'Courgette', cursive; "
+          class="btn  d-block mx-auto mt-5" (ngSubmit)="ref.form.valid && onSelect(ref)">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

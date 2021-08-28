@@ -1,0 +1,6 @@
+.container-fluid {
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4cTbSkOqyHvy4s4wqCgB5vJXb4yoK1hFoyA&usqp=CAU"); */
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

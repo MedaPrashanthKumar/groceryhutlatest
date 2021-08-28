@@ -1,0 +1,36 @@
+<div class="container-fluid mt-4">
+  <div class="row row-cols-1 row-cols-sm-4 g-4" style="justify-content: center;">
+    <div class="col" *ngFor="let product of products | search:searchTerm">
+      <div class="card h-100 bg-light" style="  border:2px solid black  ;border-radius: 30px;">
+        <span class="vegetarianicon mt-2 " style="margin-left: 10px;  ">⊡</span>
+        <img src={{product.productimage}} class="card-img-top  p-3 mx-auto"
+          style="cursor: pointer; height: 200px; width: 160px;" alt="...">
+        <div class="card-body">
+          <a href="#" style="text-decoration: none; color: black;">
+            <h3 class="card-title text-center" style="font-family: 'Charm', cursive;"> {{product.productname }} </h3>
+          </a>
+        </div>
+        <div class="carddetails d-block mx-auto">
+          <h5 class="card-title">
+            <h5 style="font-family: 'Kreon', serif;">MRP: <i class="fas fa-rupee-sign"></i>{{product.productprice }}
+            </h5>
+          </h5>
+          <h5 class="card-title">
+            <h5 style="font-family: 'Kreon', serif;">Brand: {{product.productbrand | titlecase}}</h5>
+          </h5>
+          <h5 class="card-title">
+            <h5 style="font-family: 'Kreon', serif;">Country of Origin: {{product.countryoforigin | uppercase}}</h5>
+          </h5>
+        </div>
+        <div class="btn btn-toolbar" style="justify-content: space-between;">
+          <button class="btn  m-2"
+            style="width: max-content; background-color: red; color: white; border: 3px solid red; border-radius:10px;"
+            (click)="gotoViewProduct(product.productid)"><i class="fas fa-eye"></i> View</button>
+          <button class="btn  float-right m-2"
+            style="width: max-content;background-color:darkblue; color: white; border: 3px solid darkblue; border-radius:10px;"
+            (click)="addToCart(product)"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
