@@ -49,4 +49,6 @@ export class DalsPulsesComponent implements OnInit {
           alert("Error occurred")
           console.log(err)
         })
-    }}}
+    }
+  }
+}

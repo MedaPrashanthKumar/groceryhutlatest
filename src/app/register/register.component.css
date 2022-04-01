@@ -2,6 +2,7 @@
   0% {
     transform: scaleX(0.4);
   }
+
   100% {
     transform: scaleX(1);
   }
@@ -30,6 +31,7 @@
   0% {
     transform: translateX(0);
   }
+
   90% {
     transform: translateX(-110px);
   }
@@ -38,10 +40,12 @@
 .example1 {
   animation: slide-right 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
 @keyframes slide-right {
   0% {
     transform: translateX(0);
   }
+
   90% {
     transform: translateX(90px);
   }

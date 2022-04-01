@@ -1,95 +1,93 @@
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
-            <h1 class="text-center">Product Registration Form</h1>
-            <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
-                <!-- category -->
-                <div class="form-floating mb-3 mt-2">
-                    <label for="category">Category</label>
-                    <select class="form-select" id="category" name="category" ngModel #category="ngModel" required>
-                        <option value="{{categoryMenu}}" *ngFor="let categoryMenu of categoryArray">{{categoryMenu}}
-                        </option>
-                    </select>
-                    <!-- validation for category -->
-                    <p *ngIf="(category.touched || formRef.submitted)&&category.errors?.required" class="text-danger">
-                        *Please Select the category</p>
-                </div>
-                <!-- product id -->
-                <div class="form-floating mb-3 ">
-                    <input type="number" class="form-control " id="productid" placeholder="product ID" name="productid"
-                        ngModel #productid="ngModel" required>
-                    <label for="productid">Product ID</label>
-                </div>
-                <!-- validation for productid-->
-                <p *ngIf="(productid.touched || formRef.submitted)&&productid.errors?.required" class="text-danger">
-                    *Product ID required</p>
-                <!-- product name -->
-                <div class="form-floating mb-3 ">
-                    <input type="text" class="form-control" id="username" placeholder="Product name" name="productname"
-                        #productname="ngModel" ngModel required>
-                    <label for="username">Product name</label>
-                </div>
-                <!-- validation for productname-->
-                <p *ngIf="(productname.touched || formRef.submitted)&&productname.errors?.required" class="text-danger">
-                    *Product name required</p>
-                <!-- product brand -->
-                <div class="form-floating mb-3 ">
-                    <input type="text" class="form-control" id="username" placeholder="Product Brand"
-                        name="productbrand" #productbrand="ngModel" ngModel required>
-                    <label for="username">Product Brand</label>
-                </div>
-                <!-- validation for productbrand-->
-                <p *ngIf="(productbrand.touched || formRef.submitted) && productbrand.errors?.required"
-                    class="text-danger">
-                    *Product Brand required</p>
-                <!-- Quantity-->
-                <div class="form-floating mb-3 ">
-                    <input type="number" class="form-control" id="username" placeholder="Quantity" name="quantity"
-                        #quantity="ngModel" ngModel required>
-                    <label for="username">Quantity</label>
-                </div>
-                <!-- validation for productbrand-->
-                <p *ngIf="(quantity.touched || formRef.submitted) && quantity.errors?.required" class="text-danger">
-                    *Please specify quantity</p>
-                <!-- product price -->
-                <div class="form-floating mb-3 ">
-                    <input type="number" class="form-control" id="password" placeholder="Product price"
-                        name="productprice" #productprice="ngModel" ngModel required>
-                    <label for="password">Product price</label>
-                </div>
-                <!-- validation for productprice-->
-                <p *ngIf="(productprice.touched || formRef.submitted)&&productprice.errors?.required"
-                    class="text-danger">*Product Price required</p>
-                <!-- product description -->
-                <div class="form-floating">
-                    <textarea class="form-control mb-3" placeholder="Write product description"
-                        name="productdescription" id="productdescription" style="height: 100px" ngModel
-                        #productdescription="ngModel" required></textarea>
-                    <label for="productdescription">Product description</label>
-                </div>
-                <!-- validation for productdescription-->
-                <p *ngIf="(productdescription.touched || formRef.submitted)&&productdescription.errors?.required"
-                    class="text-danger">*Product description required</p>
-                <!-- country of origin -->
-                <div class="form-floating mb-3 ">
-                    <input type="text" class="form-control" id="username" placeholder="Country Of Origin"
-                        name="countryoforigin" #countryoforigin="ngModel" ngModel required>
-                    <label for="username">Country Of Origin</label>
-                </div>
-                <!-- validation for productbrand-->
-                <p *ngIf="(countryoforigin.touched || formRef.submitted) && countryoforigin.errors?.required"
-                    class="text-danger">
-                    *Country of origin required</p>
-                <!-- image select -->
-                <input type="file" class="form-control mb-3" (change)="incomingfile($event)" name="photo"
-                    accept='image/*' placeholder="Upload file" #photo="ngModel" ngModel required>
-                <!-- validation for image-->
-                <p *ngIf="(photo.touched || formRef.submitted)&&photo.errors?.required" class="text-danger">Select
-                    product image</p>
-                <button type="submit" class="btn btn-primary d-block mx-auto">Add product</button>
-            </form>
+  <div class="row mt-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h1 class="text-center">Product Registration Form</h1>
+      <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+        <!-- category -->
+        <div class="form-floating mb-3 mt-2">
+          <label for="category">Category</label>
+          <select class="form-select" id="category" name="category" ngModel #category="ngModel" required>
+            <option value="{{categoryMenu}}" *ngFor="let categoryMenu of categoryArray">{{categoryMenu}}
+            </option>
+          </select>
+          <!-- validation for category -->
+          <p *ngIf="(category.touched || formRef.submitted)&&category.errors?.required" class="text-danger">
+            *Please Select the category</p>
         </div>
-        <div class="col-sm-2"></div>
+        <!-- product id -->
+        <div class="form-floating mb-3 ">
+          <input type="number" class="form-control " id="productid" placeholder="product ID" name="productid" ngModel
+            #productid="ngModel" required>
+          <label for="productid">Product ID</label>
+        </div>
+        <!-- validation for productid-->
+        <p *ngIf="(productid.touched || formRef.submitted)&&productid.errors?.required" class="text-danger">
+          *Product ID required</p>
+        <!-- product name -->
+        <div class="form-floating mb-3 ">
+          <input type="text" class="form-control" id="username" placeholder="Product name" name="productname"
+            #productname="ngModel" ngModel required>
+          <label for="username">Product name</label>
+        </div>
+        <!-- validation for productname-->
+        <p *ngIf="(productname.touched || formRef.submitted)&&productname.errors?.required" class="text-danger">
+          *Product name required</p>
+        <!-- product brand -->
+        <div class="form-floating mb-3 ">
+          <input type="text" class="form-control" id="username" placeholder="Product Brand" name="productbrand"
+            #productbrand="ngModel" ngModel required>
+          <label for="username">Product Brand</label>
+        </div>
+        <!-- validation for productbrand-->
+        <p *ngIf="(productbrand.touched || formRef.submitted) && productbrand.errors?.required" class="text-danger">
+          *Product Brand required</p>
+        <!-- Quantity-->
+        <div class="form-floating mb-3 ">
+          <input type="number" class="form-control" id="username" placeholder="Quantity" name="quantity"
+            #quantity="ngModel" ngModel required>
+          <label for="username">Quantity</label>
+        </div>
+        <!-- validation for productbrand-->
+        <p *ngIf="(quantity.touched || formRef.submitted) && quantity.errors?.required" class="text-danger">
+          *Please specify quantity</p>
+        <!-- product price -->
+        <div class="form-floating mb-3 ">
+          <input type="number" class="form-control" id="password" placeholder="Product price" name="productprice"
+            #productprice="ngModel" ngModel required>
+          <label for="password">Product price</label>
+        </div>
+        <!-- validation for productprice-->
+        <p *ngIf="(productprice.touched || formRef.submitted)&&productprice.errors?.required" class="text-danger">
+          *Product Price required</p>
+        <!-- product description -->
+        <div class="form-floating">
+          <textarea class="form-control mb-3" placeholder="Write product description" name="productdescription"
+            id="productdescription" style="height: 100px" ngModel #productdescription="ngModel" required></textarea>
+          <label for="productdescription">Product description</label>
+        </div>
+        <!-- validation for productdescription-->
+        <p *ngIf="(productdescription.touched || formRef.submitted)&&productdescription.errors?.required"
+          class="text-danger">*Product description required</p>
+        <!-- country of origin -->
+        <div class="form-floating mb-3 ">
+          <input type="text" class="form-control" id="username" placeholder="Country Of Origin" name="countryoforigin"
+            #countryoforigin="ngModel" ngModel required>
+          <label for="username">Country Of Origin</label>
+        </div>
+        <!-- validation for productbrand-->
+        <p *ngIf="(countryoforigin.touched || formRef.submitted) && countryoforigin.errors?.required"
+          class="text-danger">
+          *Country of origin required</p>
+        <!-- image select -->
+        <input type="file" class="form-control mb-3" (change)="incomingfile($event)" name="photo" accept='image/*'
+          placeholder="Upload file" #photo="ngModel" ngModel required>
+        <!-- validation for image-->
+        <p *ngIf="(photo.touched || formRef.submitted)&&photo.errors?.required" class="text-danger">Select
+          product image</p>
+        <button type="submit" class="btn btn-primary d-block mx-auto">Add product</button>
+      </form>
     </div>
+    <div class="col-sm-2"></div>
+  </div>
 </div>

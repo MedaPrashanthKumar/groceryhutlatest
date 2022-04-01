@@ -28,7 +28,8 @@ export class HomecardsComponent implements OnInit {
       },
       err => {
         console.log(err)
-      })}
+      })
+  }
 
 
   gotoViewProduct(productid) {
@@ -55,5 +56,7 @@ export class HomecardsComponent implements OnInit {
         err => {
           alert("Error occurred")
           console.log(err)
-        })}}
+        })
+    }
+  }
 }
