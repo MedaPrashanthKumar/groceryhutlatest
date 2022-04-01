@@ -30,7 +30,6 @@ export class UserdashboardComponent implements OnInit {
     )
 
     this.username = localStorage.getItem("username")
-    console.log("hello", this.username)
     this.cartStatus();
   }
 
@@ -48,7 +47,6 @@ export class UserdashboardComponent implements OnInit {
       let selectedProduct = {};
       selectedProduct["username"] = username;
       selectedProduct["product"] = product;
-      console.log(selectedProduct)
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
           this.toaster.success(res["message"])

@@ -49,7 +49,6 @@ userApiObj.post("/register",errorHandler(async (req, res, next) => {
 // ----------USER LOGIN---------------
 userApiObj.post("/login",errorHandler(async (req,res,next)=>{
     let user=await User.findOne({username:req.body.username})
-    // console.log(user)
     if(user==null){
         res.send({message:"invaliduser"})
     }
@@ -68,7 +67,6 @@ userApiObj.post("/login",errorHandler(async (req,res,next)=>{
 //---------- get user details by username---------
 userApiObj.get("/getsingleuserprofiledetail/:username",validateToken,errorHandler(async(req,res,next)=>{
     let singleUserObj = await User.findOne({username:req.params.username})
-    // console.log(singleUserObj)
     delete singleUserObj.password;
     res.send({message:singleUserObj})
 }))

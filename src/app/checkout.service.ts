@@ -8,7 +8,6 @@ export class CheckoutService {
   constructor() { }
   setSum(cart: any) {
     this.cartSum = cart;
-    console.log("in service sum is", cart)
   }
   getSum() {
     return this.cartSum

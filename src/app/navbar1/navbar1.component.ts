@@ -32,7 +32,6 @@ export class Navbar1Component implements OnInit {
       },
       err=>{
         this.toaster.error("Something went wrong in searching")
-        console.log("from navbar1",err)
       })
   }
 

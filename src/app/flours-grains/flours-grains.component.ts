@@ -39,7 +39,6 @@ export class FloursGrainsComponent implements OnInit {
       let selectedProduct = {};
       selectedProduct["username"] = username;
       selectedProduct["product"] = product;
-      console.log(selectedProduct)
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
           alert(res["message"])

@@ -58,8 +58,6 @@ adminApiObj.post("/login", errorHandler(async (req, res, next) => {
 // ---------add product-----
 //adding new product
 adminApiObj.post("/addproduct",upload.single('photo'),errorHandler(async (req,res,next)=>{
-    console.log(req.body)
-    console.log(req.file.path)
     //find existing product by ID in DB
     let product=await Product.findOne({productid:req.body.productid})
     //if product is already existed

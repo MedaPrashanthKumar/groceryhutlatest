@@ -19,10 +19,8 @@ export class BillingComponent implements OnInit {
     this.cartservice.getCartByUsername(this.username).subscribe(
       res => {
         this.cart = res['userCart']
-        console.log("from cart", this.cart)
         for (let i = 0; i < this.cart.length; i++) {
           this.sum = this.sum + this.cart[i].productprice
-          console.log("from sum is", this.cart[i].productprice)
         }
         this.chckout.setSum(this.sum)
       },
@@ -30,7 +28,6 @@ export class BillingComponent implements OnInit {
         console.log("error in cart", err)
       }
     )
-    console.log("cart", this.cart)
   }
   onSubmit(formRef) {
   }

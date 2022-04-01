@@ -15,11 +15,9 @@ export class DalsPulsesComponent implements OnInit {
   constructor(private userservice: UserService, private router: Router, private toaster: ToastrService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    console.log("hii iam dals")
     this.userservice.getdals().subscribe(
       res => {
         this.dalsarray = res["message"]
-        console.log("iam dalspulses", this.dalsarray)
       },
       err => {
         console.log("error from dals pulses", err)
@@ -41,7 +39,6 @@ export class DalsPulsesComponent implements OnInit {
       let selectedProduct = {};
       selectedProduct["username"] = username;
       selectedProduct["product"] = product;
-      console.log(selectedProduct)
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
           alert(res["message"])

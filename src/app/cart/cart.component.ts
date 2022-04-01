@@ -25,10 +25,8 @@ export class CartComponent implements OnInit {
     this.cartservice.getCartByUsername(this.username).subscribe(
       res => {
         this.cart = res['userCart']
-        console.log("from cart", this.cart)
         for (let i = 0; i < this.cart.length; i++) {
           this.sum = this.sum + this.cart[i].productprice
-          console.log("from sum is", this.cart[i].productprice)
         }
         this.chckout.setSum(this.sum)
       },
@@ -36,12 +34,10 @@ export class CartComponent implements OnInit {
         console.log("error in cart", err)
       }
     )
-    console.log("cart", this.cart)
   }
 
   deleteprodincart(item) {
     this.sum = 0;
-    console.log(item)
     let id = item.productid
     let cartObj = { "username": this.username, "id": id }
     this.userservice.deleteprodfromcart(cartObj).subscribe(
@@ -52,7 +48,6 @@ export class CartComponent implements OnInit {
         }
         else {
           this.cart = res['product']
-          console.log(this.cart)
           for (let i of this.cart) {
             this.sum = this.sum + i.productprice
           }
@@ -84,7 +79,6 @@ export class CartComponent implements OnInit {
             this.sum = this.sum + i.productprice
           }
           this.chckout.setSum(this.sum)
-          console.log(this.sum)
         }
       },
       err => {
@@ -95,7 +89,6 @@ export class CartComponent implements OnInit {
 
   plus(item: any) {
     this.sum = 0;
-    console.log("in plus", this.sum)
     item.productprice = (item.productprice) / item.quantity
     item.quantity = ++item.quantity;
     item.productprice = (item.quantity * item.productprice)
@@ -108,14 +101,12 @@ export class CartComponent implements OnInit {
             this.sum = this.sum + i.productprice
           }
           this.chckout.setSum(this.sum)
-          console.log(this.sum)
         }
       },
       err => {
         this.toaster.error("update failed")
       }
     )
-    console.log("price and quantity is", item.productprice, item.quantity)
   }
 
   payment() {

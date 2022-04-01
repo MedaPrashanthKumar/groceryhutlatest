@@ -42,11 +42,9 @@ export class LoginComponent implements OnInit {
   // -----------------------------logged in person as user------------------------------
   onSelect(ref) {
     let usercredobj = ref.value;
-    console.log(usercredobj)
     if (usercredobj.person == "user") {
       this.us.loginUser(usercredobj).subscribe(
         res => {
-          console.log("response is", res)
           if (res["message"] == "success") {
             this.toaster.success("User login Successfull !!!");
             // for token it is there normally so no need to change anyting about it
@@ -57,7 +55,6 @@ export class LoginComponent implements OnInit {
             this.loginStatus = true;
             this.us.LoginStatusMethod(this.loginStatus)
             let username = localStorage.getItem("username")
-            // console.log("username is",username)
             this.router.navigateByUrl(`/userdashboard/${username}`)
             ref.resetForm();
           }

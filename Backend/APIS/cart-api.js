@@ -38,9 +38,7 @@ cartApiObj.get("/getcart/:username", errorHandler(async (req, res, next) => {
     for(let i  of userCart){
         let product = await Product.findOne({productid:i.productid})
         if(product==null){
-            console.log(product)
             let result =  await Cart.deleteOne({$and:[{username:req.params.username},{productid:i.productid}]})
-            console.log(result)
         }
     }
     res.send({ cartsize: userCart.length, userCart: userCart })
@@ -50,12 +48,10 @@ cartApiObj.get("/getcart/:username", errorHandler(async (req, res, next) => {
 cartApiObj.put("/updatetotal/:username",errorHandler(async(req,res,next)=>{
          let count = await Cart.updateOne({$and:[{username:req.params.username},{productid:req.body.productid}]},{quantity:req.body.quantity,productprice:req.body.productprice})
          let success = await Cart.find({username:req.params.username})
-         console.log("success is",success)
          res.send({message:"updated successfully",a:success})
 }))
 
 cartApiObj.post("/removeprodfromcart",errorHandler(async(req,res,next)=>{
-    console.log(req.body)
     let cartarray=[];
      let prodtobedeletedfromcart = await Cart.deleteOne( {username:req.body.username,"productid":req.body.id})
      let products = await Cart.find({username:req.body.username})

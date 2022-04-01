@@ -37,7 +37,6 @@ export class ProductlistComponent implements OnInit {
   }
 
   delete(product) {
-    console.log(product)
     this.adminservice.deleteProduct(product).subscribe(
       res => {
         if (res["message"]) {
@@ -55,7 +54,6 @@ export class ProductlistComponent implements OnInit {
 
   save(product) {
     product.isEdit = false;
-    console.log(product);
     this.adminservice.editProduct(product).subscribe(
       res => {
         if (res["message"]) {

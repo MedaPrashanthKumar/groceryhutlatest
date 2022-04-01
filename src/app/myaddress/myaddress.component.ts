@@ -20,7 +20,6 @@ export class MyaddressComponent implements OnInit {
     if (formRef.valid) {
       this.toaster.success("New Address added Successfully!!!");
       let addressobj = formRef.value;
-      console.log(addressobj);
       formRef.resetForm();
     }
     else {

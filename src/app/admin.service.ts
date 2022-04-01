@@ -40,7 +40,6 @@ export class AdminService {
   }
   // delete product
   deleteProduct(product: object): Observable<any> {
-    console.log("admin from delete product service", product)
     return this.hc.post("/product/removeproduct", product)
   }
 }

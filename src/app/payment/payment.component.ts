@@ -17,7 +17,6 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.sum = this.chckout.getSum()
-    console.log(this.sum)
   }
 
   onSubmit(formRef) {

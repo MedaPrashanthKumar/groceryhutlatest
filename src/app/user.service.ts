@@ -17,7 +17,6 @@ export class UserService {
   }
 // login user
   loginUser(usercredobj):Observable<any>{
-    console.log("in service",usercredobj)
     return this.hc.post("/user/login",usercredobj)
   }
   // ------search pipe-----------
@@ -44,7 +43,6 @@ export class UserService {
 
 // increment and decrement
 updatetotal(i:any):Observable<any>{
-  console.log("iam updated quantity from service",i)
 return this.hc.put(`/cart/updatetotal/${localStorage.getItem("username")}`,i)
 }
 
@@ -112,7 +110,6 @@ getInitialCartSize(username):Observable<any>{
 }
 // delete product by id in user cart
 deleteprodfromcart(cartObj):Observable<any>{
-  console.log("deleted item from service cart is here",cartObj)
 return this.hc.post("/cart/removeprodfromcart",cartObj)
 }
 

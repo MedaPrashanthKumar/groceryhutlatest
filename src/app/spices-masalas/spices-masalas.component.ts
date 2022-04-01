@@ -17,7 +17,6 @@ export class SpicesMasalasComponent implements OnInit {
       res => {
         //  res["message"]
         this.spicesarray = res["message"]
-        //  console.log("iam dalspulses",this.riceproductsarray)
       },
       err => {
         console.log("error from Spices and masalas", err)
@@ -38,7 +37,6 @@ export class SpicesMasalasComponent implements OnInit {
       let selectedProduct = {};
       selectedProduct["username"] = username;
       selectedProduct["product"] = product;
-      console.log(selectedProduct)
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
           alert(res["message"])
