@@ -11,14 +11,18 @@ import { UserService } from '../user.service';
 })
 export class SpicesMasalasComponent implements OnInit {
   spicesarray = [];
+  public loading : boolean = false
   constructor(private userservice: UserService, private router: Router, private toaster: ToastrService, private cartService: CartService) { }
   ngOnInit(): void {
+    this.loading = true
     this.userservice.getspicesmasala().subscribe(
       res => {
         //  res["message"]
+        this.loading = false;
         this.spicesarray = res["message"]
       },
       err => {
+        this.loading = false;
         console.log("error from Spices and masalas", err)
       })
   }
@@ -39,7 +43,8 @@ export class SpicesMasalasComponent implements OnInit {
       selectedProduct["product"] = product;
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
-          alert(res["message"])
+          // alert(res["message"])
+          this.toaster.success(res["message"])
           //inform about cartsize to user service
           this.userservice.setCartSubjectSize(res["cartsize"])
           this.router.navigateByUrl(`/userdashboard/${username}`)

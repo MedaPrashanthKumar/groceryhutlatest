@@ -43,3 +43,11 @@
   <div class="col"> <button class="btn btn-success mt-3 d-block mx-auto" *ngIf="cart.length>0"
       (click)="billing()">Checkout</button></div>
 </div>
+
+<div *ngIf="loading" id="overlay" class="spinner">
+  <img src="../../assets/generatorphp-thumb.gif" alt="Wait" alt="Loading" />
+  <div id="overlayText">
+    Wait
+    Loading
+  </div>
+</div>

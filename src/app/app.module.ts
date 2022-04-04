@@ -73,7 +73,7 @@ import { BillingComponent } from './billing/billing.component';
     ViewproductComponent,
     SearchPipe,
     PaymentComponent,
-    BillingComponent
+    BillingComponent,
   ],
   imports: [
     BrowserModule,

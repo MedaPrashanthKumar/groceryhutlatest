@@ -11,14 +11,18 @@ import { UserService } from '../user.service';
 })
 export class DairyproductsComponent implements OnInit {
   dairyarray = [];
+  public loading : boolean = false
   constructor(private userservice: UserService, private toaster: ToastrService, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.userservice.getDairyProducts().subscribe(
       res => {
+        this.loading = false;
         this.dairyarray = res["message"]
       },
       err => {
+        this.loading = false;
         console.log("error from Dairy Products", err)
       })
   }
@@ -41,7 +45,8 @@ export class DairyproductsComponent implements OnInit {
       selectedProduct["product"] = product;
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
-          alert(res["message"])
+          // alert(res["message"])
+          this.toaster.success(res["message"])
           this.userservice.setCartSubjectSize(res["cartsize"])
           this.router.navigateByUrl(`/userdashboard/${username}`)
         },

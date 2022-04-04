@@ -12,6 +12,8 @@ import { UserService } from '../user.service';
 export class RegisterComponent implements OnInit {
   $subs: Subscription;
   logStatus: boolean;
+  public loading : boolean = false
+
   constructor(private us: UserService, private router: Router, private toaster: ToastrService) { }
 
   ngOnInit(): void {
@@ -36,20 +38,24 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(formRef) {
+    this.loading = true;
     let userobj = formRef.value;
     this.us.createUser(userobj).subscribe(
       res => {
         if (res["message"] == "user created") {
+          this.loading = true;
           this.toaster.success("User registration success")
           this.router.navigateByUrl("/login")
           formRef.resetForm();
         }
         if (res["message"] == "user existed") {
+          this.loading = false;
           this.toaster.warning("Username " + userobj.username + " is already existed.Please choose another")
           formRef.resetForm();
         }
       },
       err => {
+        this.loading = false;
         this.toaster.error("something went wrong !!")
         console.log(err)
       })

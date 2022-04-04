@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
   item;
   username: any;
   i: any;
+  public loading : boolean = false
 
   constructor(private cartservice: CartService, private router: Router, private userservice: UserService, private toaster: ToastrService, private chckout: CheckoutService) {
   }

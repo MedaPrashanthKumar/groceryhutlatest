@@ -8,7 +8,8 @@
     <div class="col-sm-5 example2 mt-5">
       <!-- Register Form -->
       <h3 style="font-family: 'Courgette',cursive; font-size: 30px; color: sandybrown;">Setup Your Account Here</h3>
-      <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+      <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&
+      (formRef)">
         <!-- Username -->
         <input type="text" style="width: 75%;" id="n" class="form-control mb-3" name="username" required #ref1="ngModel"
           placeholder="Username" ngModel autocomplete="off">
@@ -66,5 +67,14 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="loading" id="overlay" class="spinner">
+  <img src="../../assets/generatorphp-thumb.gif" alt="Wait" alt="Loading" />
+  <div id="overlayText">
+    Wait
+    Loading
+  </div>
+</div>
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>

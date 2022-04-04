@@ -10,15 +10,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./rice-products.component.css']
 })
 export class RiceProductsComponent implements OnInit {
+  public loading : boolean = false;
   riceproductsarray = [];
   constructor(private userservice: UserService, private router: Router, private cartService: CartService, private toaster: ToastrService) { }
 
   ngOnInit(): void {
+    this.loading = true
     this.userservice.getriceproducts().subscribe(
       res => {
+        this.loading = false;
         this.riceproductsarray = res["message"]
       },
       err => {
+        this.loading = false;
         console.log("error from rice products", err)
       })
   }
@@ -39,9 +43,9 @@ export class RiceProductsComponent implements OnInit {
       selectedProduct["product"] = product;
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
-          alert(res["message"])
+          // alert(res["message"])
+          this.toaster.success(res["message"]);
           this.userservice.setCartSubjectSize(res["cartsize"])
-
           this.router.navigateByUrl(`/userdashboard/${username}`)
         },
         err => {

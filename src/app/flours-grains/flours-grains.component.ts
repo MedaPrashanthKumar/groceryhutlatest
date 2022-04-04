@@ -10,15 +10,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./flours-grains.component.css']
 })
 export class FloursGrainsComponent implements OnInit {
+  public loading : boolean = false;
   floursgrainsarray = [];
   constructor(private userservice: UserService, private router: Router, private cartService: CartService, private toaster: ToastrService) { }
 
   ngOnInit(): void {
+    this.loading = true
     this.userservice.getfloursgrains().subscribe(
       res => {
+        this.loading = false;
         this.floursgrainsarray = res["message"]
       },
       err => {
+        this.loading = false;
         console.log("error from flours-grains", err)
       })
   }
@@ -41,7 +45,8 @@ export class FloursGrainsComponent implements OnInit {
       selectedProduct["product"] = product;
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
-          alert(res["message"])
+          // alert(res["message"])
+          this.toaster.success(res["message"])
           this.userservice.setCartSubjectSize(res["cartsize"])
           this.router.navigateByUrl(`/userdashboard/${username}`)
         },

@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   logStatus: boolean;
   usercredobj;
   $subs: Subscription;
+  public loading: boolean = false
+
 
   constructor(private us: UserService, private router: Router, private adminservice: AdminService, private toaster: ToastrService) { }
 
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
 
   // -----------------------------logged in person as user------------------------------
   onSelect(ref) {
+    this.loading = true;
     let usercredobj = ref.value;
     if (usercredobj.person == "user") {
       this.us.loginUser(usercredobj).subscribe(
@@ -52,6 +55,7 @@ export class LoginComponent implements OnInit {
             // but when coming to user it is in the form of js object .we need to convert to string and then store it 
             // let userObj=JSON.stringify(res["user"])
             localStorage.setItem("username", res["username"])
+            this.loading = false;
             this.loginStatus = true;
             this.us.LoginStatusMethod(this.loginStatus)
             let username = localStorage.getItem("username")
@@ -59,10 +63,13 @@ export class LoginComponent implements OnInit {
             ref.resetForm();
           }
           else {
+            if (res["message"] == "invaliduser" || "invalidpassword")
+              this.loading = false;
             this.toaster.error(res["message"])
           }
         },
         err => {
+          this.loading = false;
           alert("Error occurred")
           console.log(err)
         })
@@ -70,21 +77,26 @@ export class LoginComponent implements OnInit {
 
 
     //  for admin
-    if (usercredobj.person == "admin" && (usercredobj.username == "admin" && usercredobj.password == "admin")) {
+    if (usercredobj.person == "admin" && (usercredobj.username == "admin" && usercredobj.password == "admin123")) {
       this.toaster.success(" Admin login successfull !!!")
       this.adminservice.adminLogin(usercredobj).subscribe(
         res => {
           localStorage.setItem("token", res["token"])
           localStorage.setItem("admin", res["username"])
+          this.loading = false;
           this.router.navigateByUrl("/admin")
           ref.resetForm();
         },
         err => {
+          this.loading = false;
           console.log(err)
         })
     }
-    else if (usercredobj.person == "admin" && (usercredobj.username != "admin" || usercredobj.password != "admin")) {
-      this.toaster.error("Invalid username or password...")
+    else {
+      if ((usercredobj.person == "admin" && (usercredobj.username != "admin" || usercredobj.password != "admin123"))) {
+        this.loading = false;
+        this.toaster.error("Invalid username or password...")
+      }
     }
   }
 }

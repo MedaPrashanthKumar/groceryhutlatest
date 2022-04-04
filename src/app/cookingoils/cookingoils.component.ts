@@ -11,14 +11,18 @@ import { UserService } from '../user.service';
 })
 export class CookingoilsComponent implements OnInit {
   cookingoilsarray = [];
+  public loading : boolean = false
   constructor(private userservice: UserService, private router: Router, private toaster: ToastrService, private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.loading = true
     this.userservice.getcookingoils().subscribe(
       res => {
+        this.loading = false;
         this.cookingoilsarray = res["message"]
       },
       err => {
+        this.loading = false;
         console.log("error from Cooking Oils", err)
       })
   }
@@ -41,7 +45,8 @@ export class CookingoilsComponent implements OnInit {
       selectedProduct["product"] = product;
       this.cartService.addToCart(selectedProduct).subscribe(
         res => {
-          alert(res["message"])
+          // alert(res["message"])
+          this.toaster.success(res["message"])
           this.userservice.setCartSubjectSize(res["cartsize"])
           this.router.navigateByUrl(`/userdashboard/${username}`)
         },
