@@ -8,8 +8,7 @@
     <div class="col-sm-5 example2 mt-5">
       <!-- Register Form -->
       <h3 style="font-family: 'Courgette',cursive; font-size: 30px; color: sandybrown;">Setup Your Account Here</h3>
-      <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&
-      (formRef)">
+      <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&& onSubmit(formRef)">
         <!-- Username -->
         <input type="text" style="width: 75%;" id="n" class="form-control mb-3" name="username" required #ref1="ngModel"
           placeholder="Username" ngModel autocomplete="off">
